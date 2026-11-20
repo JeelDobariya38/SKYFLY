@@ -14,7 +14,7 @@
                 <li><a href="<c:url value='/my-bookings' />" class="${activePage == 'bookings' ? 'active' : ''}">My Bookings</a></li>
             </c:if>
             <c:if test="${not empty sessionScope.currentUser and sessionScope.currentUser.admin}">
-                <li><a href="<c:url value='/admin/dashboard' />" style="color: #38bdf8; font-weight: 700;">Admin Dashboard</a></li>
+                <li><a href="<c:url value='/admin/dashboard' />" class="${activePage == 'admin' ? 'active' : ''}" style="color: #38bdf8; font-weight: 700;">Admin Dashboard</a></li>
             </c:if>
         </ul>
 

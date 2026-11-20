@@ -2,11 +2,11 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 
-<c:set var="pageTitle" value="Flight Management - SkyFly Admin" />
-<c:set var="isAdminSection" value="true" />
-<c:set var="activePage" value="admin" />
-<c:set var="adminActive" value="flights" />
-<c:set var="adminPageTitle" value="Flight Schedules & Inventory" />
+<c:set var="pageTitle" value="Flight Management - SkyFly Admin" scope="request" />
+<c:set var="isAdminSection" value="true" scope="request" />
+<c:set var="activePage" value="admin" scope="request" />
+<c:set var="adminActive" value="flights" scope="request" />
+<c:set var="adminPageTitle" value="Flight Schedules & Inventory" scope="request" />
 <jsp:include page="../common/header.jsp" />
 <jsp:include page="../common/navbar.jsp" />
 <jsp:include page="../common/admin-navbar.jsp" />

@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
-<c:set var="pageTitle" value="Airline Carriers - SkyFly Admin" />
-<c:set var="isAdminSection" value="true" />
-<c:set var="activePage" value="admin" />
-<c:set var="adminActive" value="airlines" />
+<c:set var="pageTitle" value="Airline Carriers - SkyFly Admin" scope="request" />
+<c:set var="isAdminSection" value="true" scope="request" />
+<c:set var="activePage" value="admin" scope="request" />
+<c:set var="adminActive" value="airlines" scope="request" />
 <jsp:include page="../common/header.jsp" />
 <jsp:include page="../common/navbar.jsp" />
 <jsp:include page="../common/admin-navbar.jsp" />
