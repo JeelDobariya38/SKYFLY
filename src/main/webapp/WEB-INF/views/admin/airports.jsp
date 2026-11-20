@@ -3,29 +3,42 @@
 
 <c:set var="pageTitle" value="Airport Management - SkyFly Admin" />
 <c:set var="isAdminSection" value="true" />
+<c:set var="activePage" value="admin" />
 <c:set var="adminActive" value="airports" />
 <c:set var="adminPageTitle" value="Airport Directory Management" />
 <jsp:include page="../common/header.jsp" />
-
-<jsp:include page="../common/admin-sidebar.jsp" />
+<jsp:include page="../common/navbar.jsp" />
+<jsp:include page="../common/admin-navbar.jsp" />
 
 <main class="admin-main">
-    <jsp:include page="../common/admin-navbar.jsp" />
-
     <div class="admin-content">
+        <div class="admin-page-header">
+            <div>
+                <span class="admin-header-pill">🛫 Airport Network</span>
+                <h1 class="page-title">Airport Directory Management</h1>
+                <p class="page-subtitle">Manage IATA airports, international terminals, and operational locations.</p>
+            </div>
+            <div class="admin-page-actions">
+                <a href="<c:url value='/admin/airports/new' />" class="btn btn-primary">
+                    <span>+ Add New Airport</span>
+                </a>
+            </div>
+        </div>
+
         <jsp:include page="../common/messages.jsp" />
 
         <div class="table-card">
             <div class="table-header">
-                <h3>Registered Airports</h3>
-                <div style="display: flex; gap: 12px; align-items: center;">
-                    <input type="text" id="tableQuickSearch" class="table-search-input" placeholder="Quick search airports...">
+                <h3><span>🛫</span> Registered Airports</h3>
+                <div class="table-header-tools">
+                    <input type="text" id="tableQuickSearch" class="table-search-input" placeholder="🔍 Quick search airports...">
                     <a href="<c:url value='/admin/airports/new' />" class="btn btn-primary btn-sm">
                         + Add New Airport
                     </a>
                 </div>
             </div>
 
+            <div class="table-responsive">
             <table class="data-table">
                 <thead>
                     <tr>
@@ -65,6 +78,7 @@
                     </c:forEach>
                 </tbody>
             </table>
+            </div>
         </div>
     </div>
 </main>

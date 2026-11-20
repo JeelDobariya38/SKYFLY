@@ -3,29 +3,46 @@
 
 <c:set var="pageTitle" value="${isEdit ? 'Edit Flight' : 'Schedule Flight'} - SkyFly Admin" />
 <c:set var="isAdminSection" value="true" />
+<c:set var="activePage" value="admin" />
 <c:set var="adminActive" value="flights" />
 <c:set var="adminPageTitle" value="${isEdit ? 'Update Flight Schedule' : 'Schedule New Flight'}" />
 <jsp:include page="../common/header.jsp" />
-
-<jsp:include page="../common/admin-sidebar.jsp" />
+<jsp:include page="../common/navbar.jsp" />
+<jsp:include page="../common/admin-navbar.jsp" />
 
 <main class="admin-main">
-    <jsp:include page="../common/admin-navbar.jsp" />
-
     <div class="admin-content">
-        <div style="margin-bottom: 24px;">
-            <a href="<c:url value='/admin/flights' />" style="font-weight: 600;">← Back to Flights List</a>
+        <div class="admin-back-row">
+            <a href="<c:url value='/admin/flights' />" class="admin-back-btn">
+                <span>&larr;</span> Back to Flights List
+            </a>
+        </div>
+
+        <div class="admin-page-header">
+            <div>
+                <span class="admin-header-pill">✈ Flight Scheduler</span>
+                <h1 class="page-title">${isEdit ? 'Update Flight Schedule' : 'Schedule New Flight'}</h1>
+                <p class="page-subtitle">Configure flight inventory, carrier, schedule timings, and seat pricing.</p>
+            </div>
         </div>
 
         <jsp:include page="../common/messages.jsp" />
 
-        <div class="card" style="max-width: 700px;">
+        <div class="admin-form-card wide">
+            <div class="admin-form-header">
+                <div class="admin-form-icon">✈</div>
+                <div>
+                    <h2>Flight Information</h2>
+                    <p>Set the carrier, route, timings, capacity and pricing for this flight.</p>
+                </div>
+            </div>
+
             <form action="<c:url value='/admin/flights/save' />" method="post" id="flightScheduleForm">
                 <c:if test="${isEdit}">
                     <input type="hidden" name="id" value="${flightDto.id}">
                 </c:if>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                <div class="form-grid-2">
                     <div class="form-group">
                         <label class="form-label" for="flightNumber">Flight Number</label>
                         <input type="text" id="flightNumber" name="flightNumber" class="form-control" 
@@ -45,7 +62,7 @@
                     </div>
                 </div>
 
-                <div class="form-group" style="margin-bottom: 16px;">
+                <div class="form-group">
                     <label class="form-label" for="routeId">Flight Route</label>
                     <select id="routeId" name="routeId" class="form-control" required>
                         <option value="">Select Flight Route</option>
@@ -57,7 +74,7 @@
                     </select>
                 </div>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                <div class="form-grid-2">
                     <div class="form-group">
                         <label class="form-label" for="departureTime">Departure Date & Time</label>
                         <input type="datetime-local" id="departureTime" name="departureTime" class="form-control" 
@@ -71,7 +88,7 @@
                     </div>
                 </div>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+                <div class="form-grid-3">
                     <div class="form-group">
                         <label class="form-label" for="totalSeats">Total Capacity</label>
                         <input type="number" id="totalSeats" name="totalSeats" class="form-control" 
@@ -95,7 +112,7 @@
                     </div>
                 </div>
 
-                <div style="display: flex; gap: 12px;">
+                <div class="form-actions">
                     <button type="submit" class="btn btn-primary">
                         <c:out value="${isEdit ? 'Update Flight' : 'Schedule Flight'}" />
                     </button>

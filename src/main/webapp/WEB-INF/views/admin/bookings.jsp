@@ -4,24 +4,31 @@
 
 <c:set var="pageTitle" value="Booking Management - SkyFly Admin" />
 <c:set var="isAdminSection" value="true" />
+<c:set var="activePage" value="admin" />
 <c:set var="adminActive" value="bookings" />
 <c:set var="adminPageTitle" value="Reservation & Passenger Bookings" />
 <jsp:include page="../common/header.jsp" />
-
-<jsp:include page="../common/admin-sidebar.jsp" />
+<jsp:include page="../common/navbar.jsp" />
+<jsp:include page="../common/admin-navbar.jsp" />
 
 <main class="admin-main">
-    <jsp:include page="../common/admin-navbar.jsp" />
-
     <div class="admin-content">
+        <div class="admin-page-header">
+            <div>
+                <span class="admin-header-pill">🎫 Reservations Desk</span>
+                <h1 class="page-title">Reservation & Passenger Bookings</h1>
+                <p class="page-subtitle">Search, filter and inspect every customer reservation and its payment status.</p>
+            </div>
+        </div>
+
         <jsp:include page="../common/messages.jsp" />
 
         <div class="table-card">
             <div class="table-header">
-                <h3>Passenger Reservations</h3>
+                <h3><span>🎫</span> Passenger Reservations</h3>
                 <form action="<c:url value='/admin/bookings' />" method="get" class="table-search-form">
                     <input type="text" name="keyword" class="table-search-input" 
-                           placeholder="Search by PNR, customer or flight..." value="${keyword}">
+                           placeholder="🔍 Search by PNR, customer or flight..." value="${keyword}">
                     <select name="status" class="table-search-input" style="min-width: 140px;" onchange="this.form.submit()">
                         <option value="">All Statuses</option>
                         <option value="CONFIRMED" ${selectedStatus == 'CONFIRMED' ? 'selected' : ''}>Confirmed</option>
@@ -34,6 +41,7 @@
                 </form>
             </div>
 
+            <div class="table-responsive">
             <table class="data-table">
                 <thead>
                     <tr>
@@ -107,6 +115,7 @@
                     </c:choose>
                 </tbody>
             </table>
+            </div>
         </div>
     </div>
 </main>

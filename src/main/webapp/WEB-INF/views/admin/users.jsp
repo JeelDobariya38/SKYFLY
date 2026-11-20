@@ -3,24 +3,31 @@
 
 <c:set var="pageTitle" value="Customer Accounts - SkyFly Admin" />
 <c:set var="isAdminSection" value="true" />
+<c:set var="activePage" value="admin" />
 <c:set var="adminActive" value="users" />
 <c:set var="adminPageTitle" value="Registered Customers & User Management" />
 <jsp:include page="../common/header.jsp" />
-
-<jsp:include page="../common/admin-sidebar.jsp" />
+<jsp:include page="../common/navbar.jsp" />
+<jsp:include page="../common/admin-navbar.jsp" />
 
 <main class="admin-main">
-    <jsp:include page="../common/admin-navbar.jsp" />
-
     <div class="admin-content">
+        <div class="admin-page-header">
+            <div>
+                <span class="admin-header-pill">👥 Customer Directory</span>
+                <h1 class="page-title">Registered Customers & User Management</h1>
+                <p class="page-subtitle">Review customer accounts and activate or deactivate access when required.</p>
+            </div>
+        </div>
+
         <jsp:include page="../common/messages.jsp" />
 
         <div class="table-card">
             <div class="table-header">
-                <h3>Registered Customer Accounts</h3>
+                <h3><span>👥</span> Registered Customer Accounts</h3>
                 <form action="<c:url value='/admin/users' />" method="get" class="table-search-form">
                     <input type="text" name="keyword" class="table-search-input" 
-                           placeholder="Search customer by name or email..." value="${keyword}">
+                           placeholder="🔍 Search customer by name or email..." value="${keyword}">
                     <button type="submit" class="btn btn-primary btn-sm">Search</button>
                     <c:if test="${not empty keyword}">
                         <a href="<c:url value='/admin/users' />" class="btn btn-sm btn-outline-primary">Reset</a>
@@ -28,6 +35,7 @@
                 </form>
             </div>
 
+            <div class="table-responsive">
             <table class="data-table">
                 <thead>
                     <tr>
@@ -89,6 +97,7 @@
                     </c:choose>
                 </tbody>
             </table>
+            </div>
         </div>
     </div>
 </main>
