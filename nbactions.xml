@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actions>
+    <!-- NetBeans "Run" (F6 / green button): start embedded Tomcat, print URL, open browser -->
+    <action>
+        <actionName>run</actionName>
+        <packagings>
+            <packaging>*</packaging>
+        </packagings>
+        <goals>
+            <goal>spring-boot:run</goal>
+        </goals>
+        <properties>
+            <skipTests>true</skipTests>
+        </properties>
+    </action>
+    <!-- NetBeans "Debug" (Ctrl+F5) -->
+    <action>
+        <actionName>debug</actionName>
+        <packagings>
+            <packaging>*</packaging>
+        </packagings>
+        <goals>
+            <goal>spring-boot:run</goal>
+        </goals>
+        <properties>
+            <skipTests>true</skipTests>
+            <spring-boot.run.jvmArguments>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</spring-boot.run.jvmArguments>
+            <jpda.listen>true</jpda.listen>
+        </properties>
+    </action>
     <action>
         <actionName>CUSTOM-Spring Server</actionName>
         <displayName>Spring Server</displayName>
